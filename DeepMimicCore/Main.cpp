@@ -6,6 +6,11 @@
 
 #include "render/DrawUtil.h"
 #include "render/TextureDesc.h"
+#include <iostream>
+
+using namespace std;
+
+
 
 // Dimensions of the window we are drawing into.
 int gWinWidth = 800;
@@ -35,11 +40,11 @@ double gUpdatesPerSec = 0;
 std::vector<std::string> gArgs;
 std::unique_ptr<cDeepMimicCore> gCore;
 
-void SetupDeepMimicCore()
+void SetupDeepMimicCore(const char *path = nullptr)
 {
 	bool enable_draw = true;
 	gCore = std::unique_ptr<cDeepMimicCore>(new cDeepMimicCore(enable_draw));
-	gCore->ParseArgs(gArgs);
+	gCore->ParseArgs(gArgs, path);
 	gCore->Init();
 
 	int num_agents = gCore->GetNumAgents();
@@ -364,9 +369,8 @@ void DrawMainLoop()
 int main(int argc, char** argv)
 {
 	FormatArgs(argc, argv, gArgs);
-
 	InitDraw(argc, argv);
-	SetupDeepMimicCore();
+	SetupDeepMimicCore(argv[1]);
 	SetupDraw();
 
 	DrawMainLoop();

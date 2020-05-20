@@ -22,12 +22,13 @@ void cDeepMimicCore::SeedRand(int seed)
 	cMathUtil::SeedRand(seed);
 }
 
-void cDeepMimicCore::ParseArgs(const std::vector<std::string>& args)
+void cDeepMimicCore::ParseArgs(const std::vector<std::string>& args, const char *path)
 {
 	mArgParser->LoadArgs(args);
-
 	std::string arg_file = "";
 	mArgParser->ParseString("arg_file", arg_file);
+  if (path != nullptr)
+    arg_file = std::string(path);
 	if (arg_file != "")
 	{
 		// append the args from the file to the ones from the commandline

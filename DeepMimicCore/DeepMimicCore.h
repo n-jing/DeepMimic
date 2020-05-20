@@ -13,7 +13,7 @@ public:
 	virtual ~cDeepMimicCore();
 
 	virtual void SeedRand(int seed);
-	virtual void ParseArgs(const std::vector<std::string>& args);
+	virtual void ParseArgs(const std::vector<std::string>& args, const char *path = nullptr);
 	virtual void Init();
 	virtual void Update(double timestep);
 	virtual void Reset();
