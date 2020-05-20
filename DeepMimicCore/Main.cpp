@@ -138,7 +138,7 @@ void Update(double time_elapsed)
 					}
 				}
 				gCore->SetSampleCount(gSampleCount);
-				gCore->Reset();
+				// gCore->Reset();
 			}
 		}
 	}
